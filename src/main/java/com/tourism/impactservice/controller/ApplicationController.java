@@ -1,6 +1,6 @@
-package com.tourism.baseapplication.controller;
+package com.tourism.impactservice.controller;
 
-import com.tourism.baseapplication.model.ApplicationDTO;
+import com.tourism.impactservice.model.ApplicationDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

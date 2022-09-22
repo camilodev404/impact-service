@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tourism</groupId>
-	<artifactId>asset-management</artifactId>
+	<artifactId>impact-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>asset-management</name>
-	<description>Project for managing toursism assets</description>
+	<name>impact-service</name>
+	<description>Project for managing asset impact</description>
 	<properties>
 		<java.version>11</java.version>
 		<org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
