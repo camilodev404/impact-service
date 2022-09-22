@@ -1,4 +1,4 @@
-package com.tourism.baseapplication.model;
+package com.tourism.impactservice.model;
 
 import com.tourism.model.BaseDTO;
 

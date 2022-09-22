@@ -1,4 +1,4 @@
-package com.tourism.baseapplication.domain;
+package com.tourism.impactservice.domain;
 
 import com.tourism.domain.BaseEntity;
 
