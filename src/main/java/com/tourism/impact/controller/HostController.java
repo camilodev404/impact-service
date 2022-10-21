@@ -24,7 +24,6 @@ public class HostController extends BaseController<Host, HostDTO, HostDTO, UUID>
 
     @Override
     public ResponseEntity<HostDTO> create(HostDTO dto) {
-
         return super.create(dto);
     }
 

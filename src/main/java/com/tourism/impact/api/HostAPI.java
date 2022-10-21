@@ -5,10 +5,7 @@ import com.tourism.api.TemplateAPI;
 import com.tourism.impact.model.HostDTO;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -23,6 +20,13 @@ public interface HostAPI extends TemplateAPI<HostDTO, HostDTO, UUID> {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     ResponseEntity<HostDTO> get(@PathVariable UUID id);
+
+
+    @PostMapping(
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    ResponseEntity<HostDTO> create(@RequestBody HostDTO dto);
 
 
 
