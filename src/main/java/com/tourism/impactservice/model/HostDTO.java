@@ -12,4 +12,16 @@ public class HostDTO extends PersistentDTO {
 
     public String name;
 
+    public String email;
+
+    public Boolean dataTreatment;
+
+    public String touristAccept;
+
+    public String suggestion;
+
+    public String improvement;
+
+
+
 }

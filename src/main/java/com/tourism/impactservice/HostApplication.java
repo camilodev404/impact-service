@@ -1,5 +1,6 @@
 package com.tourism.impactservice;
 
+import com.tourism.impactservice.domain.Factor;
 import com.tourism.impactservice.mapper.HostMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,5 +12,7 @@ public class HostApplication {
     public static void main (String [] args) {
 
         SpringApplication.run(HostApplication.class, args);
+
+
     }
 }
