@@ -2,6 +2,7 @@ package com.tourism.impact.domain;
 
 import com.tourism.config.AuditTrailLog;
 import com.tourism.domain.BaseEntity;
+import com.tourism.impact.domain.host.HostOpinion;
 import com.tourism.impact.domain.host.HostTourismSector;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -46,6 +47,17 @@ public class Host extends BaseEntity {
 
     @Transient
     private List<HostTourismSector> hostTourismSectorList;
+
+    @Transient
+    private List<HostOpinion> hostOpinionList;
+
+    public List<HostOpinion> getHostOpinionList() {
+        return hostOpinionList;
+    }
+
+    public void setHostOpinionList(List<HostOpinion> hostOpinionList) {
+        this.hostOpinionList = hostOpinionList;
+    }
 
     public String getLack() {
         return lack;

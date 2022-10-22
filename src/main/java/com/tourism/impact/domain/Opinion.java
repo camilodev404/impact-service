@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
+@Table(name = "opinion")
 public class Opinion extends BaseEntity {
 
     @Column

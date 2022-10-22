@@ -1,5 +1,6 @@
 package com.tourism.impact.model;
 
+import com.tourism.impact.domain.host.HostOpinion;
 import com.tourism.impact.domain.host.HostTourismSector;
 import com.tourism.model.PersistentDTO;
 import lombok.*;
@@ -33,6 +34,16 @@ public class HostDTO extends PersistentDTO {
     private UUID communityId;
 
     private List<HostTourismSector> hostTourismSectorList;
+
+    private List<HostOpinion> hostOpinionList;
+
+    public List<HostOpinion> getHostOpinionList() {
+        return hostOpinionList;
+    }
+
+    public void setHostOpinionList(List<HostOpinion> hostOpinionList) {
+        this.hostOpinionList = hostOpinionList;
+    }
 
     public String getLack() {
         return lack;
