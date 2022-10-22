@@ -125,7 +125,7 @@ public abstract class GenericDetailUtil<Object extends BaseEntity, ObjectType ex
     }
 
     public List<EntityObject> findAllByEntityId(ID id){
-        return entityObjectRepository.findAllByObjectId(id);
+        return entityObjectRepository.findAllByHostId(id);
     }
 
     private void validateObject(List<UUID> ids) throws NotFoundException {
@@ -149,7 +149,7 @@ public abstract class GenericDetailUtil<Object extends BaseEntity, ObjectType ex
 
     private EntityObject insertEntityId(ID id, EntityObject object, Class<?> clazz) throws JsonProcessingException {
         Map<String, String> mappedObject = objectMapper.readValue(objectMapper.writeValueAsString(object), HashMap.class);
-        mappedObject.put("entityId", id.toString());
+        mappedObject.put("hostId", id.toString());
         return (EntityObject) objectMapper.readValue(objectMapper.writeValueAsString(mappedObject),  clazz);
     }
 }

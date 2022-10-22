@@ -1,8 +1,10 @@
 package com.tourism.impact.model;
 
+import com.tourism.impact.domain.host.HostTourismSector;
 import com.tourism.model.PersistentDTO;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -26,9 +28,27 @@ public class HostDTO extends PersistentDTO {
 
     private String improvement;
 
-    private UUID tourismSectorId;
+    private String lack;
 
     private UUID communityId;
+
+    private List<HostTourismSector> hostTourismSectorList;
+
+    public String getLack() {
+        return lack;
+    }
+
+    public void setLack(String lack) {
+        this.lack = lack;
+    }
+
+    public List<HostTourismSector> getHostTourismSectorList() {
+        return hostTourismSectorList;
+    }
+
+    public void setHostTourismSectorList(List<HostTourismSector> hostTourismSectorList) {
+        this.hostTourismSectorList = hostTourismSectorList;
+    }
 
     public String getName() {
         return name;
@@ -76,14 +96,6 @@ public class HostDTO extends PersistentDTO {
 
     public void setImprovement(String improvement) {
         this.improvement = improvement;
-    }
-
-    public UUID getTourismSectorId() {
-        return tourismSectorId;
-    }
-
-    public void setTourismSectorId(UUID tourismSectorId) {
-        this.tourismSectorId = tourismSectorId;
     }
 
     public UUID getCommunityId() {

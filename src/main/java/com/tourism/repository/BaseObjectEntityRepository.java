@@ -6,5 +6,5 @@ import java.util.List;
 
 @NoRepositoryBean
 public interface BaseObjectEntityRepository<E, ID> extends BaseRepository{
-    List<E> findAllByObjectId(ID id);
+    List<E> findAllByHostId(ID id);
 }

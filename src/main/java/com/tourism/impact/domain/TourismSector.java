@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "toursim_sector")
+@Table(name = "tourism_sector")
 public class TourismSector extends BaseEntity {
 
     @Column

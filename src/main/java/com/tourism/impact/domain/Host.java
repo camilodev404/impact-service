@@ -2,19 +2,16 @@ package com.tourism.impact.domain;
 
 import com.tourism.config.AuditTrailLog;
 import com.tourism.domain.BaseEntity;
+import com.tourism.impact.domain.host.HostTourismSector;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Data
 @Entity
-@Setter
-@Getter
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
@@ -41,12 +38,30 @@ public class Host extends BaseEntity {
     @Column(name = "improvement")
     private String improvement;
 
+    @Column(name = "lack")
+    private String lack;
+
     @Column(name = "community_id")
     private UUID communityId;
 
-    @Column(name = "tourism_sector_id")
-    private UUID tourismSectorId;
+    @Transient
+    private List<HostTourismSector> hostTourismSectorList;
 
+    public String getLack() {
+        return lack;
+    }
+
+    public void setLack(String lack) {
+        this.lack = lack;
+    }
+
+    public List<HostTourismSector> getHostTourismSectorList() {
+        return hostTourismSectorList;
+    }
+
+    public void setHostTourismSectorList(List<HostTourismSector> hostTourismSectorList) {
+        this.hostTourismSectorList = hostTourismSectorList;
+    }
     public String getName() {
         return name;
     }
@@ -103,11 +118,4 @@ public class Host extends BaseEntity {
         this.communityId = communityId;
     }
 
-    public UUID getTourismSectorId() {
-        return tourismSectorId;
-    }
-
-    public void setTourismSectorId(UUID tourismSectorId) {
-        this.tourismSectorId = tourismSectorId;
-    }
 }
