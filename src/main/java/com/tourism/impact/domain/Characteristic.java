@@ -6,6 +6,9 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -13,7 +16,7 @@ import javax.persistence.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
+@Table(name = "characteristic")
 public class Characteristic extends BaseEntity {
 
     @Column
@@ -22,7 +25,10 @@ public class Characteristic extends BaseEntity {
     @Column
     private String description;
 
-    @Column
-    private String score;
+    @Column(name = "factor_id")
+    private UUID factorId;
+
+    @Transient
+    private List<CharacteristicScore> characteristicScoreList;
 
 }

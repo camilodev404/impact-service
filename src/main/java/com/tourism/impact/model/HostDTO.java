@@ -37,6 +37,8 @@ public class HostDTO extends PersistentDTO {
 
     private List<HostOpinion> hostOpinionList;
 
+    private MaturityDTO maturity;
+
     public List<HostOpinion> getHostOpinionList() {
         return hostOpinionList;
     }

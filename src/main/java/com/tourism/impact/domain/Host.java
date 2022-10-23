@@ -4,6 +4,7 @@ import com.tourism.config.AuditTrailLog;
 import com.tourism.domain.BaseEntity;
 import com.tourism.impact.domain.host.HostOpinion;
 import com.tourism.impact.domain.host.HostTourismSector;
+import com.tourism.impact.model.MaturityDTO;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -50,6 +51,9 @@ public class Host extends BaseEntity {
 
     @Transient
     private List<HostOpinion> hostOpinionList;
+
+    @Transient
+    private MaturityDTO maturity;
 
     public List<HostOpinion> getHostOpinionList() {
         return hostOpinionList;

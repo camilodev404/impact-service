@@ -12,13 +12,17 @@ import com.tourism.impact.utils.TourismSectorUtil;
 import com.tourism.service.BaseService;
 import com.tourism.validation.BaseValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@Primary
 public class HostService extends BaseService<Host, HostDTO, UUID> {
+
+    private final CharacteristicService characteristicService;
 
     private final HostRepository hostRepository;
 
@@ -36,6 +40,7 @@ public class HostService extends BaseService<Host, HostDTO, UUID> {
                        BaseValidator validator,
                        TourismSectorUtil tourismSectorUtil,
                        TourismSectorRepository tourismSectorRepository,
+                       CharacteristicService characteristicService,
                        OpinionUtil opinionUtil) {
         super(hostRepository, hostMapper, validator);
         this.hostRepository = hostRepository;
@@ -43,13 +48,16 @@ public class HostService extends BaseService<Host, HostDTO, UUID> {
         this.tourismSectorRepository = tourismSectorRepository;
         this.tourismSectorUtil = tourismSectorUtil;
         this.opinionUtil = opinionUtil;
+        this.characteristicService = characteristicService;
     }
 
     @Override
     public HostDTO create(HostDTO dto) {
         validator.validate(dto, HostDTO.class);
         Host mappedHost = mapper.map(dto);
-        return mapper.map(persistHost(mappedHost));
+        HostDTO persistedHost = mapper.map(persistHost(mappedHost));
+        characteristicService.saveCharacteristicScores(dto.getMaturity());
+        return persistedHost;
     }
 
     private Host persistHost(Host host){

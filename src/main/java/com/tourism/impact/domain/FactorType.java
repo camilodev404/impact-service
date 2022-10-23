@@ -13,10 +13,10 @@ import javax.persistence.Table;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
-public class TypeFactor extends BaseEntity {
+@Table(name = "factor_type")
+public class FactorType extends BaseEntity {
 
-    @Column
+    @Column(name = "name")
     private String name;
 
 }
