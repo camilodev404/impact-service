@@ -43,8 +43,17 @@ public class Host extends BaseEntity {
     @Column(name = "lack")
     private String lack;
 
+    @Column(name = "community_type_id")
+    private String communityTypeId;
+
     @Column(name = "community_id")
     private UUID communityId;
+
+    @Column(name = "municipality_id")
+    private UUID municipalityId;
+
+    @Column(name = "department_id")
+    private UUID departmentId;
 
     @Transient
     private List<HostTourismSector> hostTourismSectorList;
@@ -134,4 +143,35 @@ public class Host extends BaseEntity {
         this.communityId = communityId;
     }
 
+    public String getCommunityTypeId() {
+        return communityTypeId;
+    }
+
+    public void setCommunityTypeId(String communityTypeId) {
+        this.communityTypeId = communityTypeId;
+    }
+
+    public UUID getMunicipalityId() {
+        return municipalityId;
+    }
+
+    public void setMunicipalityId(UUID municipalityId) {
+        this.municipalityId = municipalityId;
+    }
+
+    public UUID getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(UUID departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public MaturityDTO getMaturity() {
+        return maturity;
+    }
+
+    public void setMaturity(MaturityDTO maturity) {
+        this.maturity = maturity;
+    }
 }

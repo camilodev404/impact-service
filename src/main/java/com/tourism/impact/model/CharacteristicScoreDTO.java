@@ -13,5 +13,6 @@ import java.util.UUID;
 @EqualsAndHashCode
 public class CharacteristicScoreDTO{
     private UUID characteristicId;
+    private UUID hostId;
     private int score;
 }

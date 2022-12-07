@@ -1,5 +1,6 @@
 package com.tourism.impact.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tourism.impact.domain.host.HostOpinion;
 import com.tourism.impact.domain.host.HostTourismSector;
 import com.tourism.model.PersistentDTO;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@JsonIgnoreProperties({"hostOpinionList"})
 public class HostDTO extends PersistentDTO {
 
     private String name;
@@ -31,7 +33,13 @@ public class HostDTO extends PersistentDTO {
 
     private String lack;
 
+    private String communityTypeId;
+
     private UUID communityId;
+
+    private UUID municipalityId;
+
+    private UUID departmentId;
 
     private List<HostTourismSector> hostTourismSectorList;
 
@@ -117,5 +125,37 @@ public class HostDTO extends PersistentDTO {
 
     public void setCommunityId(UUID communityId) {
         this.communityId = communityId;
+    }
+
+    public String getCommunityTypeId() {
+        return communityTypeId;
+    }
+
+    public void setCommunityTypeId(String communityTypeId) {
+        this.communityTypeId = communityTypeId;
+    }
+
+    public UUID getMunicipalityId() {
+        return municipalityId;
+    }
+
+    public void setMunicipalityId(UUID municipalityId) {
+        this.municipalityId = municipalityId;
+    }
+
+    public UUID getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(UUID departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public MaturityDTO getMaturity() {
+        return maturity;
+    }
+
+    public void setMaturity(MaturityDTO maturity) {
+        this.maturity = maturity;
     }
 }

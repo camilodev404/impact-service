@@ -46,7 +46,7 @@ public class CharacteristicService extends BaseService<Characteristic, Character
         this.factorTypeRepository = factorTypeRepository;
     }
 
-    public void saveCharacteristicScores (MaturityDTO maturity) {
+    public void saveCharacteristicScores (MaturityDTO maturity, UUID hostId) {
         try{
             maturity.getFactorTypeList().stream().map(factorTypeDTO -> {
                 validateFactorTypeExistence(factorTypeDTO.getFactorTypeId());
@@ -57,6 +57,7 @@ public class CharacteristicService extends BaseService<Characteristic, Character
                         return characteristicScoreRepository.save(
                                 CharacteristicScore.builder()
                                         .characteristicId(characteristicScoreDTO.getCharacteristicId())
+                                        .hostId(hostId)
                                         .score(characteristicScoreDTO.getScore())
                                         .build());
                     }).collect(Collectors.toList());

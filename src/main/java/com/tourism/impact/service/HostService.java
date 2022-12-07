@@ -4,9 +4,12 @@ import com.tourism.impact.domain.Host;
 import com.tourism.impact.domain.host.HostOpinion;
 import com.tourism.impact.domain.host.HostTourismSector;
 import com.tourism.impact.mapper.HostMapper;
+import com.tourism.impact.model.FormDataDTO;
 import com.tourism.impact.model.HostDTO;
+import com.tourism.impact.references.ServiceConstants;
 import com.tourism.impact.repository.HostRepository;
 import com.tourism.impact.repository.TourismSectorRepository;
+import com.tourism.impact.repository.custom.CustomHostRepository;
 import com.tourism.impact.utils.OpinionUtil;
 import com.tourism.impact.utils.TourismSectorUtil;
 import com.tourism.service.BaseService;
@@ -35,13 +38,17 @@ public class HostService extends BaseService<Host, HostDTO, UUID> {
     private final OpinionUtil opinionUtil;
 
     @Autowired
+    private final CustomHostRepository customHostRepository;
+
+    @Autowired
     public HostService(HostRepository hostRepository,
                        HostMapper hostMapper,
                        BaseValidator validator,
                        TourismSectorUtil tourismSectorUtil,
                        TourismSectorRepository tourismSectorRepository,
                        CharacteristicService characteristicService,
-                       OpinionUtil opinionUtil) {
+                       OpinionUtil opinionUtil,
+                       CustomHostRepository customHostRepository) {
         super(hostRepository, hostMapper, validator);
         this.hostRepository = hostRepository;
         this.hostMapper = hostMapper;
@@ -49,6 +56,7 @@ public class HostService extends BaseService<Host, HostDTO, UUID> {
         this.tourismSectorUtil = tourismSectorUtil;
         this.opinionUtil = opinionUtil;
         this.characteristicService = characteristicService;
+        this.customHostRepository = customHostRepository;
     }
 
     @Override
@@ -56,7 +64,7 @@ public class HostService extends BaseService<Host, HostDTO, UUID> {
         validator.validate(dto, HostDTO.class);
         Host mappedHost = mapper.map(dto);
         HostDTO persistedHost = mapper.map(persistHost(mappedHost));
-        characteristicService.saveCharacteristicScores(dto.getMaturity());
+        characteristicService.saveCharacteristicScores(dto.getMaturity(), persistedHost.getId());
         return persistedHost;
     }
 
@@ -73,5 +81,12 @@ public class HostService extends BaseService<Host, HostDTO, UUID> {
 
     private List<HostOpinion> saveHostOpinion(Host host){
         return opinionUtil.saveObjects(host.getId(), host.getHostOpinionList(), HostOpinion.class, "opinionId");
+    }
+
+    public FormDataDTO getFormData (String objectName) {
+        if (ServiceConstants.formBuilderValues.contains(objectName)){
+            return customHostRepository.findAllObject(objectName);
+        }
+        return null;
     }
 }
