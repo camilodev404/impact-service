@@ -1,8 +1,7 @@
 package com.tourism.domain;
 
 import com.tourism.config.AuditTrailLog;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -14,13 +13,12 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Getter
-@Setter
-@MappedSuperclass
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
 @EntityListeners(AuditTrailLog.class)
+@MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 3079160803954956035L;
