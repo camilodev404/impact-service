@@ -6,16 +6,21 @@ import com.tourism.impact.domain.Characteristic;
 import com.tourism.impact.domain.CharacteristicScore;
 import com.tourism.impact.mapper.CharacteristicMapper;
 import com.tourism.impact.model.CharacteristicDTO;
+import com.tourism.impact.model.FactorDTO;
+import com.tourism.impact.model.FactorTypeDTO;
 import com.tourism.impact.model.MaturityDTO;
 import com.tourism.impact.repository.CharacteristicRepository;
 import com.tourism.impact.repository.CharacteristicScoreRepository;
 import com.tourism.impact.repository.FactorRepository;
 import com.tourism.impact.repository.FactorTypeRepository;
+import com.tourism.impact.repository.custom.CustomCharacteristicRepository;
 import com.tourism.service.BaseService;
 import com.tourism.validation.BaseValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -33,17 +38,21 @@ public class CharacteristicService extends BaseService<Characteristic, Character
     private final FactorTypeRepository factorTypeRepository;
 
     @Autowired
+    private final CustomCharacteristicRepository customCharacteristicRepository;
+
+    @Autowired
     public CharacteristicService (CharacteristicRepository characteristicRepository,
                                   CharacteristicMapper characteristicMapper,
                                   BaseValidator baseValidator,
                                   CharacteristicScoreRepository characteristicScoreRepository,
-                                  FactorRepository factorRepository, FactorTypeRepository factorTypeRepository){
+                                  FactorRepository factorRepository, FactorTypeRepository factorTypeRepository, CustomCharacteristicRepository customCharacteristicRepository){
         super(characteristicRepository, characteristicMapper, baseValidator);
         this.characteristicRepository = characteristicRepository;
         this.characteristicMapper = characteristicMapper;
         this.characteristicScoreRepository = characteristicScoreRepository;
         this.factorRepository = factorRepository;
         this.factorTypeRepository = factorTypeRepository;
+        this.customCharacteristicRepository = customCharacteristicRepository;
     }
 
     public void saveCharacteristicScores (MaturityDTO maturity, UUID hostId) {
@@ -68,6 +77,40 @@ public class CharacteristicService extends BaseService<Characteristic, Character
         }catch (Exception e){
             throw new ServiceException(e.getMessage());
         }
+    }
+
+    public MaturityDTO getMaturity(List <UUID> communityIds) {
+        List<FactorTypeDTO> factorTypes = new ArrayList<>();
+        factorTypeRepository.findAll().forEach(factorType -> {
+            List<FactorDTO> factors = new ArrayList<>();
+            factorRepository.findAllByFactorTypeId(factorType.getId()).forEach(factor -> {
+                List<CharacteristicDTO> characteristicDTOList = new ArrayList<>();
+                characteristicRepository.findAllByFactorId(factor.getId()).forEach(
+                        characteristic -> {
+                            characteristicDTOList.add(
+                                    CharacteristicDTO.builder()
+                                            .name(characteristic.getName())
+                                            .description(characteristic.getDescription())
+                                            .factorId(characteristic.getFactorId())
+                                            .averageCharacteristicScore(customCharacteristicRepository.getCharacteristicScore(characteristic.getId(), communityIds))
+                                            .build()
+                            );
+                        }
+                );
+                factors.add(FactorDTO.builder()
+                        .factorId(factor.getId())
+                        .name(factor.getName())
+                        .characteristicList(characteristicDTOList)
+                        .build());
+            });
+            factorTypes.add(FactorTypeDTO.builder()
+                            .factorTypeId(factorType.getId())
+                            .name(factorType.getName())
+                            .factorList(factors)
+                    .build());
+        });
+        return MaturityDTO.builder()
+                .factorTypeList(factorTypes).build();
     }
 
     private void validateCharacteristicExistence (UUID characteristicId){

@@ -5,6 +5,7 @@ import com.tourism.impact.api.HostAPI;
 import com.tourism.impact.domain.Host;
 import com.tourism.impact.model.FormDataDTO;
 import com.tourism.impact.model.HostDTO;
+import com.tourism.impact.model.MaturityDTO;
 import com.tourism.impact.references.ServiceConstants;
 import com.tourism.impact.service.HostService;
 import com.tourism.validation.BaseValidator;
@@ -45,5 +46,12 @@ public class HostController extends BaseController<Host, HostDTO, HostDTO, UUID>
     @Override
     public ResponseEntity<HostDTO> get(UUID id) {
         return super.get(id);
+    }
+
+    @PostMapping(
+            value = "/impact",
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MaturityDTO> getImpactForCommunityIds (@RequestBody FormDataDTO formDataDTO) {
+        return new ResponseEntity<>(hostService.getImpact(formDataDTO), HttpStatus.OK);
     }
 }

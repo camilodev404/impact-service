@@ -1,6 +1,7 @@
 package com.tourism.impact.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tourism.impact.domain.CharacteristicScore;
 import com.tourism.model.PersistentDTO;
 import lombok.*;
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"createdAt", "createdBy", "deletedAt", "deleted", "updatedAt", "updatedBy"})
 public class CharacteristicDTO extends PersistentDTO {
 
     private String name;
@@ -21,6 +23,8 @@ public class CharacteristicDTO extends PersistentDTO {
     private String description;
 
     private UUID factorId;
+
+    private Double averageCharacteristicScore;
 
     @JsonIgnore
     private List<CharacteristicScore> characteristicScoreList;

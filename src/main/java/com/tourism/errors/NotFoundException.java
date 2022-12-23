@@ -11,6 +11,9 @@ public class NotFoundException extends RuntimeException{
     private String message = "Object with id: %id was not found.";
     private String type;
 
+    public NotFoundException (String objectName){
+        this.setMessage("Not found for object with name: " + objectName);
+    }
 
     public NotFoundException (@NotNull UUID resourceId){
         this.setMessage(String.format(message, resourceId));

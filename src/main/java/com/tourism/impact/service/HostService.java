@@ -1,11 +1,13 @@
 package com.tourism.impact.service;
 
+import com.tourism.errors.NotFoundException;
 import com.tourism.impact.domain.Host;
 import com.tourism.impact.domain.host.HostOpinion;
 import com.tourism.impact.domain.host.HostTourismSector;
 import com.tourism.impact.mapper.HostMapper;
 import com.tourism.impact.model.FormDataDTO;
 import com.tourism.impact.model.HostDTO;
+import com.tourism.impact.model.MaturityDTO;
 import com.tourism.impact.references.ServiceConstants;
 import com.tourism.impact.repository.HostRepository;
 import com.tourism.impact.repository.TourismSectorRepository;
@@ -16,10 +18,12 @@ import com.tourism.service.BaseService;
 import com.tourism.validation.BaseValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @Primary
@@ -88,5 +92,19 @@ public class HostService extends BaseService<Host, HostDTO, UUID> {
             return customHostRepository.findAllObject(objectName);
         }
         return null;
+    }
+
+    public MaturityDTO getImpact(FormDataDTO formDataDTO) {
+        /**
+         * Write logic to validate asset existence and get community ids
+         */
+        if(!formDataDTO.getObjectName().equals("communityIdList")){
+            throw new NotFoundException(formDataDTO.getObjectName());
+        }
+
+        List <UUID> communityIds = formDataDTO.getValues().stream()
+                .map(value -> UUID.fromString(value.toString()))
+                .collect(Collectors.toList());
+        return characteristicService.getMaturity(communityIds);
     }
 }
