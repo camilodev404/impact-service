@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "3cf4869c-ab9a-4751-a725-424d3fb7e468",
+		"name": "Impact Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12888672"
+	},
+	"item": [
+		{
+			"name": "HostAPI",
+			"item": [
+				{
+					"name": "Get Host By Id",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Create Host",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"correo@correo.com\",\r\n    \"municipalityId\": \"2f8949fe-4ff7-11ed-bdc3-0242ac120002\",\r\n    \"departmentId\": \"0f135e4c-c8e7-401c-82ae-f7b0b51467bd\",\r\n    \"dataTreatment\": \"true\",\r\n    \"suggestion\": \"que sugiere que para\",\r\n    \"lack\": \"qie hace falta en su municipio\",\r\n    \"communityTypeId\": \"aebbbc9a-3097-11ed-a261-0242ac120002\",\r\n    \"communityId\": \"c50347f7-855f-4b45-b6a8-44e98c586317\",\r\n    \"maturity\": {\r\n        \"factorTypeList\": [\r\n            {\r\n                \"factorTypeId\": \"db181048-725c-11ed-a1eb-0242ac120002\",\r\n                \"factorList\": [\r\n                    {\r\n                        \"factorId\": \"fe68bcdc-725c-11ed-a1eb-0242ac120002\",\r\n                        \"characteristicScoreList\": [\r\n                            {\r\n                                \"characteristicId\": \"4c3ce10e-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 2\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"51161984-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 0\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"5901cdbe-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 1\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"60af36b4-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"66f014da-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 2\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"factorId\": \"07d30ce6-725d-11ed-a1eb-0242ac120002\",\r\n                        \"characteristicScoreList\": [\r\n                            {\r\n                                \"characteristicId\": \"7303b114-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 2\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"773a59a4-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 2\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"7fc24b40-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"84c8ceca-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"factorId\": \"13af3b70-725d-11ed-a1eb-0242ac120002\",\r\n                        \"characteristicScoreList\": [\r\n                            {\r\n                                \"characteristicId\": \"8a567144-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 2\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"900ebf1a-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"95273c5c-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 1\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"factorTypeId\": \"deca53ae-725c-11ed-a1eb-0242ac120002\",\r\n                \"factorList\": [\r\n                    {\r\n                        \"factorId\": \"28260b24-725d-11ed-a1eb-0242ac120002\",\r\n                        \"characteristicScoreList\": [\r\n                            {\r\n                                \"characteristicId\": \"99bcee06-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"9fed6e72-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 1\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"a50aa5be-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"aa4d6c00-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 2\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"b23e918c-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"ba9bd2a4-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"factorId\": \"2e53551a-725d-11ed-a1eb-0242ac120002\",\r\n                        \"characteristicScoreList\": [\r\n                            {\r\n                                \"characteristicId\": \"ea22b5ba-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"e682622a-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 2\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"e161e180-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 1\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"de2b6f04-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 0\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"factorTypeId\": \"e625b058-725c-11ed-a1eb-0242ac120002\",\r\n                \"factorList\": [\r\n                    {\r\n                        \"factorId\": \"3639b4e0-725d-11ed-a1eb-0242ac120002\",\r\n                        \"characteristicScoreList\": [\r\n                            {\r\n                                \"characteristicId\": \"dad25cf0-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 0\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"d7f6f0d6-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 1\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"d4ba9846-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"d02cadb4-725d-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 2\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            {\r\n                \"factorTypeId\": \"ecc1ebfc-725c-11ed-a1eb-0242ac120002\",\r\n                \"factorList\": [\r\n                    {\r\n                        \"factorId\": \"761d43c6-7292-11ed-a1eb-0242ac120002\",\r\n                        \"characteristicScoreList\": [\r\n                            {\r\n                                \"characteristicId\": \"41f69c90-7293-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 3\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"ca3bcda6-7292-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 2\r\n                            },\r\n                            {\r\n                                \"characteristicId\": \"cd86b5fc-7292-11ed-a1eb-0242ac120002\",\r\n                                \"score\": 1\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    },\r\n    \"hostTourismSectorList\": [\r\n        {\r\n            \"tourismSectorId\": \"4bcd8052-7573-11ed-a1eb-0242ac120002\"\r\n        },\r\n        {\r\n            \"tourismSectorId\": \"51aad01a-7573-11ed-a1eb-0242ac120002\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/host",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"host"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Objects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/host/form-builder/TourismSector",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"host",
+								"form-builder",
+								"TourismSector"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Maturity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/host/impact/3e53e8aa-6775-11ed-9022-0242ac120002",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"host",
+								"impact",
+								"3e53e8aa-6775-11ed-9022-0242ac120002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
