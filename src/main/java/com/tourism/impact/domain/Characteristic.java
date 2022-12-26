@@ -15,8 +15,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "characteristic")
 public class Characteristic extends BaseEntity {
 

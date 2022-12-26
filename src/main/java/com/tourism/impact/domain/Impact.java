@@ -13,8 +13,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Table
 public class Impact extends BaseEntity {
 

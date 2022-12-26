@@ -13,7 +13,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
 @EqualsAndHashCode
 @Table(name = "characteristic_score")
 public class CharacteristicScore extends BaseEntity {

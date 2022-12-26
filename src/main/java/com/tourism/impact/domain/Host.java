@@ -16,8 +16,6 @@ import java.util.UUID;
 @Data
 @Entity
 @EqualsAndHashCode
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "host")
 @SuperBuilder(toBuilder = true)
 @EntityListeners(AuditTrailLog.class)
