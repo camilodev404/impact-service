@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  assetapp:
+    image: 'impact-service:latest'
+    build:
+      context: .
+    container_name: impactapp
+    depends_on:
+      - impactDb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://impactDb:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8081:8081"
+
+  impactDb:
+    image: 'postgres:13.1-alpine'
+    container_name: impactDb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
