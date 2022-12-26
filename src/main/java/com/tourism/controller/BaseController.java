@@ -1,6 +1,7 @@
 package com.tourism.controller;
 
 import com.tourism.api.TemplateAPI;
+import com.tourism.model.PersistentDTO;
 import com.tourism.service.BaseService;
 import com.tourism.domain.BaseEntity;
 import com.tourism.model.BaseDTO;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.Serializable;
 
 @RestController
-public class BaseController <E extends BaseEntity, T extends BaseDTO, P extends BaseDTO, ID extends Serializable>
+public class BaseController <E extends BaseEntity, T extends PersistentDTO, P extends PersistentDTO, ID extends Serializable>
         implements TemplateAPI<T, P, ID > {
 
     protected BaseValidator validator;

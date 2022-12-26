@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
 
 import java.util.Collection;
 
-public class PageData <T extends  BaseDTO>{
+public class PageData <T extends  PersistentDTO>{
 
     private Collection<T> data;
 
