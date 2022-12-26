@@ -15,6 +15,10 @@ public class ErrorResponse {
         this.message = message;
     }
 
+    public ErrorResponse(){
+
+    }
+
     public int getHttpStatusCode() {
         return httpStatusCode;
     }

@@ -9,6 +9,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -63,6 +64,63 @@ public class Host extends BaseEntity {
 
     @Transient
     private MaturityDTO maturity;
+
+
+    public Host() {
+    }
+
+    public Host(UUID id, LocalDateTime createdAt, UUID createdBy, LocalDateTime updatedAt, UUID updatedBy, boolean deleted, long deletedAt, String name, String email, boolean dataTreatment, String touristAccept, String suggestion, String improvement, String lack, String communityTypeId, UUID communityId, UUID municipalityId, UUID departmentId, List<HostTourismSector> hostTourismSectorList, List<HostOpinion> hostOpinionList, MaturityDTO maturity) {
+        super(id, createdAt, createdBy, updatedAt, updatedBy, deleted, deletedAt);
+        this.name = name;
+        this.email = email;
+        this.dataTreatment = dataTreatment;
+        this.touristAccept = touristAccept;
+        this.suggestion = suggestion;
+        this.improvement = improvement;
+        this.lack = lack;
+        this.communityTypeId = communityTypeId;
+        this.communityId = communityId;
+        this.municipalityId = municipalityId;
+        this.departmentId = departmentId;
+        this.hostTourismSectorList = hostTourismSectorList;
+        this.hostOpinionList = hostOpinionList;
+        this.maturity = maturity;
+    }
+
+    public Host(String name, String email, boolean dataTreatment, String touristAccept, String suggestion, String improvement, String lack, String communityTypeId, UUID communityId, UUID municipalityId, UUID departmentId, List<HostTourismSector> hostTourismSectorList, List<HostOpinion> hostOpinionList, MaturityDTO maturity) {
+        this.name = name;
+        this.email = email;
+        this.dataTreatment = dataTreatment;
+        this.touristAccept = touristAccept;
+        this.suggestion = suggestion;
+        this.improvement = improvement;
+        this.lack = lack;
+        this.communityTypeId = communityTypeId;
+        this.communityId = communityId;
+        this.municipalityId = municipalityId;
+        this.departmentId = departmentId;
+        this.hostTourismSectorList = hostTourismSectorList;
+        this.hostOpinionList = hostOpinionList;
+        this.maturity = maturity;
+    }
+
+    public Host(BaseEntityBuilder<?, ?> b, String name, String email, boolean dataTreatment, String touristAccept, String suggestion, String improvement, String lack, String communityTypeId, UUID communityId, UUID municipalityId, UUID departmentId, List<HostTourismSector> hostTourismSectorList, List<HostOpinion> hostOpinionList, MaturityDTO maturity) {
+        super(b);
+        this.name = name;
+        this.email = email;
+        this.dataTreatment = dataTreatment;
+        this.touristAccept = touristAccept;
+        this.suggestion = suggestion;
+        this.improvement = improvement;
+        this.lack = lack;
+        this.communityTypeId = communityTypeId;
+        this.communityId = communityId;
+        this.municipalityId = municipalityId;
+        this.departmentId = departmentId;
+        this.hostTourismSectorList = hostTourismSectorList;
+        this.hostOpinionList = hostOpinionList;
+        this.maturity = maturity;
+    }
 
     public List<HostOpinion> getHostOpinionList() {
         return hostOpinionList;

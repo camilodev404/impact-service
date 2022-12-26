@@ -6,6 +6,7 @@ import com.tourism.impact.domain.host.HostTourismSector;
 import com.tourism.model.PersistentDTO;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,6 +47,44 @@ public class HostDTO extends PersistentDTO {
     private List<HostOpinion> hostOpinionList;
 
     private MaturityDTO maturity;
+
+    public HostDTO() {
+    }
+
+    public HostDTO(UUID id, UUID createdBy, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt, boolean deleted, long deletedAt, String name, String email, boolean dataTreatment, String touristAccept, String suggestion, String improvement, String lack, String communityTypeId, UUID communityId, UUID municipalityId, UUID departmentId, List<HostTourismSector> hostTourismSectorList, List<HostOpinion> hostOpinionList, MaturityDTO maturity) {
+        super(id, createdBy, createdAt, updatedBy, updatedAt, deleted, deletedAt);
+        this.name = name;
+        this.email = email;
+        this.dataTreatment = dataTreatment;
+        this.touristAccept = touristAccept;
+        this.suggestion = suggestion;
+        this.improvement = improvement;
+        this.lack = lack;
+        this.communityTypeId = communityTypeId;
+        this.communityId = communityId;
+        this.municipalityId = municipalityId;
+        this.departmentId = departmentId;
+        this.hostTourismSectorList = hostTourismSectorList;
+        this.hostOpinionList = hostOpinionList;
+        this.maturity = maturity;
+    }
+
+    public HostDTO(String name, String email, boolean dataTreatment, String touristAccept, String suggestion, String improvement, String lack, String communityTypeId, UUID communityId, UUID municipalityId, UUID departmentId, List<HostTourismSector> hostTourismSectorList, List<HostOpinion> hostOpinionList, MaturityDTO maturity) {
+        this.name = name;
+        this.email = email;
+        this.dataTreatment = dataTreatment;
+        this.touristAccept = touristAccept;
+        this.suggestion = suggestion;
+        this.improvement = improvement;
+        this.lack = lack;
+        this.communityTypeId = communityTypeId;
+        this.communityId = communityId;
+        this.municipalityId = municipalityId;
+        this.departmentId = departmentId;
+        this.hostTourismSectorList = hostTourismSectorList;
+        this.hostOpinionList = hostOpinionList;
+        this.maturity = maturity;
+    }
 
     public List<HostOpinion> getHostOpinionList() {
         return hostOpinionList;
@@ -158,4 +197,6 @@ public class HostDTO extends PersistentDTO {
     public void setMaturity(MaturityDTO maturity) {
         this.maturity = maturity;
     }
+
+
 }

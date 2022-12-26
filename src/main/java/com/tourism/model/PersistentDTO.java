@@ -6,9 +6,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
-@NoArgsConstructor
 @EqualsAndHashCode
-@AllArgsConstructor
 public abstract class PersistentDTO implements BaseDTO{
 
     protected UUID id;
@@ -75,4 +73,16 @@ public abstract class PersistentDTO implements BaseDTO{
         this.deletedAt = deletedAt;
     }
 
+    public PersistentDTO(UUID id, UUID createdBy, LocalDateTime createdAt, UUID updatedBy, LocalDateTime updatedAt, boolean deleted, long deletedAt) {
+        this.id = id;
+        this.createdBy = createdBy;
+        this.createdAt = createdAt;
+        this.updatedBy = updatedBy;
+        this.updatedAt = updatedAt;
+        this.deleted = deleted;
+        this.deletedAt = deletedAt;
+    }
+
+    public PersistentDTO() {
+    }
 }

@@ -10,8 +10,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode
 @JsonIgnoreProperties({"createdAt", "createdBy", "deletedAt", "deleted", "updatedAt", "updatedBy"})
 public class FactorTypeDTO{
@@ -19,4 +17,37 @@ public class FactorTypeDTO{
     private UUID factorTypeId;
     private String name;
     private List<FactorDTO> factorList;
+
+    public FactorTypeDTO() {
+    }
+
+    public FactorTypeDTO(UUID factorTypeId, String name, List<FactorDTO> factorList) {
+        this.factorTypeId = factorTypeId;
+        this.name = name;
+        this.factorList = factorList;
+    }
+
+    public UUID getFactorTypeId() {
+        return factorTypeId;
+    }
+
+    public void setFactorTypeId(UUID factorTypeId) {
+        this.factorTypeId = factorTypeId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<FactorDTO> getFactorList() {
+        return factorList;
+    }
+
+    public void setFactorList(List<FactorDTO> factorList) {
+        this.factorList = factorList;
+    }
 }

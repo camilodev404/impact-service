@@ -40,4 +40,6 @@ public class ApplicationDTO extends PersistentDTO {
     public void setApplication(boolean application) {
         this.application = application;
     }
+
+
 }
