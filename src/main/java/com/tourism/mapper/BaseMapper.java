@@ -2,8 +2,9 @@ package com.tourism.mapper;
 
 import com.tourism.domain.BaseEntity;
 import com.tourism.model.BaseDTO;
+import com.tourism.model.PersistentDTO;
 
-public abstract class BaseMapper <E extends BaseEntity, T extends BaseDTO, P extends BaseDTO>{
+public abstract class BaseMapper <E extends BaseEntity, T extends PersistentDTO, P extends PersistentDTO>{
 
     public abstract E map (P dto);
     public abstract P map (E dto);

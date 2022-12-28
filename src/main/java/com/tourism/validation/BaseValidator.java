@@ -1,6 +1,7 @@
 package com.tourism.validation;
 
 import com.tourism.model.BaseDTO;
+import com.tourism.model.PersistentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class BaseValidator {
 
     }
 
-    public <T extends BaseDTO >void validate(T dto, Class<T> clazz) {
+    public <T extends PersistentDTO>void validate(T dto, Class<T> clazz) {
         BeanPropertyBindingResult result = new BeanPropertyBindingResult(dto, clazz.getName());
     }
 }

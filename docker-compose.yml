@@ -1,8 +1,8 @@
 version: '2'
 
 services:
-  assetapp:
-    image: 'impact-service:latest'
+  impactapp:
+    image: 'daniel9917/impact-service-test'
     build:
       context: .
     container_name: impactapp

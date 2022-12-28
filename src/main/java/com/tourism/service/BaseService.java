@@ -5,6 +5,7 @@ import com.tourism.domain.BaseEntity;
 import com.tourism.mapper.BaseMapper;
 import com.tourism.model.BaseDTO;
 import com.tourism.model.PageData;
+import com.tourism.model.PersistentDTO;
 import com.tourism.repository.BaseRepository;
 import com.tourism.validation.BaseValidator;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +15,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Optional;
 import java.util.UUID;
 
-public abstract class BaseService <E extends BaseEntity, P extends BaseDTO, ID extends Serializable> implements BaseServiceManagement<P, ID>{
+public abstract class BaseService <E extends BaseEntity, P extends PersistentDTO, ID extends Serializable> implements BaseServiceManagement<P, ID>{
 
     protected final BaseRepository<E, ID> repository;
 
