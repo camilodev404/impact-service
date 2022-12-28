@@ -2,7 +2,7 @@ version: '2'
 
 services:
   impactapp:
-    image: 'impact-service:latest'
+    image: 'daniel9917/impact-service-test'
     build:
       context: .
     container_name: impactapp
