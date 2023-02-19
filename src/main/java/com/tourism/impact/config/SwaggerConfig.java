@@ -11,7 +11,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 import java.util.Collections;
 
-//http://localhost:8080/swagger-ui/index.html
+//http://localhost:8081/swagger-ui/index.html
 
 @Configuration
 public class SwaggerConfig {
@@ -26,7 +26,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiDetails(){
-        return new ApiInfo("Gestion de Activos API REST",
+        return new ApiInfo("Servicio de Impactos API REST",
                 "Documentación para la API Rest del Servicio de Impactos",
                 "1.0",
                 "Prototipo Monografia Pregrado",
