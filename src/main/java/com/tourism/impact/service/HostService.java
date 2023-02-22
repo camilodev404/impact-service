@@ -94,17 +94,22 @@ public class HostService extends BaseService<Host, HostDTO, UUID> {
         return null;
     }
 
+    /**
+     * Write logic to validate asset existence and get community ids and municipality and department
+     */
     public MaturityDTO getImpact(FormDataDTO formDataDTO) {
-        /**
-         * Write logic to validate asset existence and get community ids
-         */
+
         if(!formDataDTO.getObjectName().equals("communityIdList")){
             throw new NotFoundException(formDataDTO.getObjectName());
         }
 
-        List <UUID> communityIds = formDataDTO.getValues().stream()
+        List <UUID> uuidList= formDataDTO.getValues().stream()
                 .map(value -> UUID.fromString(value.toString()))
                 .collect(Collectors.toList());
-        return characteristicService.getMaturity(communityIds);
+
+        UUID departmentId = uuidList.get( uuidList.size() - 2);
+        UUID municipalityId = uuidList.get( uuidList.size() - 1);
+        List <UUID> communityIds = uuidList.subList(0, formDataDTO.getValues().size() - 2);
+        return characteristicService.getMaturity(communityIds, departmentId, municipalityId);
     }
 }

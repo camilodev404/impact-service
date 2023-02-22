@@ -4,5 +4,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CustomCharacteristicRepository {
-    Double getCharacteristicScore (UUID characteristicId, List<UUID> communityIds);
+    Double getCharacteristicScore (UUID characteristicId, List<UUID> communityIds, UUID departmentId, UUID municipalityId);
 }

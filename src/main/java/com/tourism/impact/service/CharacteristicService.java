@@ -79,7 +79,7 @@ public class CharacteristicService extends BaseService<Characteristic, Character
         }
     }
 
-    public MaturityDTO getMaturity(List <UUID> communityIds) {
+    public MaturityDTO getMaturity(List <UUID> communityIds, UUID departmentId, UUID municipalityId) {
         List<FactorTypeDTO> factorTypes = new ArrayList<>();
         factorTypeRepository.findAll().forEach(factorType -> {
             List<FactorDTO> factors = new ArrayList<>();
@@ -92,7 +92,7 @@ public class CharacteristicService extends BaseService<Characteristic, Character
                                             .name(characteristic.getName())
                                             .description(characteristic.getDescription())
                                             .factorId(characteristic.getFactorId())
-                                            .averageCharacteristicScore(customCharacteristicRepository.getCharacteristicScore(characteristic.getId(), communityIds))
+                                            .averageCharacteristicScore(customCharacteristicRepository.getCharacteristicScore(characteristic.getId(), communityIds, departmentId, municipalityId))
                                             .build()
                             );
                         }
@@ -110,7 +110,12 @@ public class CharacteristicService extends BaseService<Characteristic, Character
                     .build());
         });
         return MaturityDTO.builder()
-                .factorTypeList(factorTypes).build();
+                .factorTypeList(factorTypes.stream()
+                        .filter(factorTypeDTO -> !(factorTypeDTO.getName().equals("QUALITY OF LIFE") ||
+                                factorTypeDTO.getName().equals("WELLNESS SUSTAINABILITY") ||
+                                factorTypeDTO.getName().equals("ECONOMIC SITUATION") ||
+                                factorTypeDTO.getName().equals("QUALITY OF LIFE")))
+                        .collect(Collectors.toList())).build();
     }
 
     private void validateCharacteristicExistence (UUID characteristicId){
