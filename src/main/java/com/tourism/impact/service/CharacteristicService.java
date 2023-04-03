@@ -4,6 +4,7 @@ import com.tourism.errors.NotFoundException;
 import com.tourism.errors.ServiceException;
 import com.tourism.impact.domain.Characteristic;
 import com.tourism.impact.domain.CharacteristicScore;
+import com.tourism.impact.domain.FactorType;
 import com.tourism.impact.mapper.CharacteristicMapper;
 import com.tourism.impact.model.CharacteristicDTO;
 import com.tourism.impact.model.FactorDTO;
@@ -79,9 +80,11 @@ public class CharacteristicService extends BaseService<Characteristic, Character
         }
     }
 
-    public MaturityDTO getMaturity(List <UUID> communityIds) {
+    public MaturityDTO getMaturity(List <UUID> communityIds, UUID departmentId, UUID municipalityId) {
         List<FactorTypeDTO> factorTypes = new ArrayList<>();
-        factorTypeRepository.findAll().forEach(factorType -> {
+        List<FactorType> factorTypeList = new ArrayList<>();
+        factorTypeRepository.findAll().forEach(factorType -> factorTypeList.add(factorType));
+        factorTypeList.forEach(factorType -> {
             List<FactorDTO> factors = new ArrayList<>();
             factorRepository.findAllByFactorTypeId(factorType.getId()).forEach(factor -> {
                 List<CharacteristicDTO> characteristicDTOList = new ArrayList<>();
@@ -92,7 +95,7 @@ public class CharacteristicService extends BaseService<Characteristic, Character
                                             .name(characteristic.getName())
                                             .description(characteristic.getDescription())
                                             .factorId(characteristic.getFactorId())
-                                            .averageCharacteristicScore(customCharacteristicRepository.getCharacteristicScore(characteristic.getId(), communityIds))
+                                            .averageCharacteristicScore(customCharacteristicRepository.getCharacteristicScore(characteristic.getId(), communityIds, departmentId, municipalityId))
                                             .build()
                             );
                         }
@@ -110,7 +113,12 @@ public class CharacteristicService extends BaseService<Characteristic, Character
                     .build());
         });
         return MaturityDTO.builder()
-                .factorTypeList(factorTypes).build();
+                .factorTypeList(factorTypes.stream()
+                        .filter(factorTypeDTO -> !(factorTypeDTO.getName().equals("QUALITY OF LIFE") ||
+                                factorTypeDTO.getName().equals("WELLNESS SUSTAINABILITY") ||
+                                factorTypeDTO.getName().equals("ECONOMIC SITUATION") ||
+                                factorTypeDTO.getName().equals("QUALITY OF LIFE")))
+                        .collect(Collectors.toList())).build();
     }
 
     private void validateCharacteristicExistence (UUID characteristicId){

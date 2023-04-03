@@ -12,6 +12,26 @@ public class ServiceConstants {
             "EnvironmentalSecurity",
             "AccessToMaterialAssets",
             "CommunityShouldDefine",
-            "TourismSector"
+            "TourismSector",
+            "Rest",
+            "Transit",
+            "CulturalRespect",
+            "Aculturation",
+            "Displacement",
+            "SocialRespect",
+            "Security",
+            "DrugAddiction",
+            "Begging",
+            "Prostitution",
+            "CulturalModification",
+            "SacredRespect",
+            "RejectMock",
+            "TraditionalUse",
+            "LinguistincLoss",
+            "Commodification",
+            "Acceptance",
+            "Benefits",
+            "Prices",
+            "TouristConduct"
     );
 }
