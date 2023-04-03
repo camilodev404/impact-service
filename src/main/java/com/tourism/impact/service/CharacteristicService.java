@@ -4,6 +4,7 @@ import com.tourism.errors.NotFoundException;
 import com.tourism.errors.ServiceException;
 import com.tourism.impact.domain.Characteristic;
 import com.tourism.impact.domain.CharacteristicScore;
+import com.tourism.impact.domain.FactorType;
 import com.tourism.impact.mapper.CharacteristicMapper;
 import com.tourism.impact.model.CharacteristicDTO;
 import com.tourism.impact.model.FactorDTO;
@@ -81,7 +82,9 @@ public class CharacteristicService extends BaseService<Characteristic, Character
 
     public MaturityDTO getMaturity(List <UUID> communityIds, UUID departmentId, UUID municipalityId) {
         List<FactorTypeDTO> factorTypes = new ArrayList<>();
-        factorTypeRepository.findAll().forEach(factorType -> {
+        List<FactorType> factorTypeList = new ArrayList<>();
+        factorTypeRepository.findAll().forEach(factorType -> factorTypeList.add(factorType));
+        factorTypeList.forEach(factorType -> {
             List<FactorDTO> factors = new ArrayList<>();
             factorRepository.findAllByFactorTypeId(factorType.getId()).forEach(factor -> {
                 List<CharacteristicDTO> characteristicDTOList = new ArrayList<>();

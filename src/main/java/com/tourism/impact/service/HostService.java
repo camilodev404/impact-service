@@ -110,6 +110,6 @@ public class HostService extends BaseService<Host, HostDTO, UUID> {
         UUID departmentId = uuidList.get( uuidList.size() - 2);
         UUID municipalityId = uuidList.get( uuidList.size() - 1);
         List <UUID> communityIds = uuidList.subList(0, formDataDTO.getValues().size() - 2);
-        return characteristicService.getMaturity(communityIds, departmentId, municipalityId);
+        return characteristicService.getMaturity(uuidList, departmentId, municipalityId);
     }
 }

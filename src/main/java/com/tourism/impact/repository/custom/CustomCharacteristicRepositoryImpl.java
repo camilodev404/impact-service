@@ -25,8 +25,10 @@ public class CustomCharacteristicRepositoryImpl implements CustomCharacteristicR
                 + characteristicId.toString() +
                 "' AND ( cs.host_id IN (SELECT id FROM host h WHERE h.community_id IN ( "
                 + String.join(",", communityIdsString) + " ) )"
-                + "OR cs.host_id IN (SELECT id FROM host h WHERE h.department_id = '"
-                + departmentId.toString() + "' OR  h.municipality_id = '" + municipalityId.toString() + "' )) ";
+                + "OR cs.host_id IN (SELECT id FROM host h WHERE " +
+                // Uncomment this if you want to also make the impact be affected by departments
+//                "h.department_id = '" + departmentId.toString() + "' OR " +
+                "  h.municipality_id = '" + municipalityId.toString() + "' )) ";
         List <Integer> values = entityManager.createNativeQuery(query).getResultList();
 
 
